@@ -1,0 +1,13 @@
+name: kute
+version: 0.1.0
+
+authors:
+  - Dave Takahashi <dtcello@gmail.com>
+
+targets:
+  kute:
+    main: src/kute.cr
+
+crystal: 0.21.1
+
+license: MIT
