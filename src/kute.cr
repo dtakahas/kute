@@ -11,6 +11,16 @@ when "cont", "con", "context"
   puts `kubectl config current-context`
 when "cd"
   puts `kubectl config use-context #{ARGV[1]}`
+when "ls"
+  if ARGV[1] == "contexts"
+    puts `kubectl config get-contexts`
+  elsif ARGV.size == 3
+    puts `kubectl get #{ARGV[2]} -n #{ARGV[1]}`
+  else
+    puts `kubectl get #{ARGV[1]}`
+  end
+when "config"
+  system("vim ~/.kube/config")
 when "go"
   unless ARGV.size == 3
     puts "Needs 2 args: namespace and container type"
