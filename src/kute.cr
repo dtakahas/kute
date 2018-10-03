@@ -21,6 +21,8 @@ when "ls"
   end
 when "config"
   system("vim ~/.kube/config")
+when "current"
+  puts `kubectl get deployments -o=jsonpath='{$.items[:1].spec.template.spec.containers[1:2].image}' -n #{ARGV[1]}`
 when "go"
   unless ARGV.size == 3
     puts "Needs 2 args: namespace and container type"
